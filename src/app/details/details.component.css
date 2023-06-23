@@ -1,0 +1,22 @@
+.icon{
+    width: 30p; height: 30px;
+}
+a{
+    display: inline-block;
+    width: 30px; 
+    height: 30px;
+}
+.close-btn { 
+        display: flex;
+        justify-content: top-left;
+}
+
+.no-border{
+    border: none;
+}
+.white-border{
+    border: 1px solid white;
+}
+.test-margin{
+    margin-left: 40px;
+}

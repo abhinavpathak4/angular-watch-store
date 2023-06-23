@@ -1,0 +1,25 @@
+
+<app-navbar></app-navbar>
+
+
+<div class="m-4">
+  <div class="row">
+    <div class="col-md-3 mb-3" *ngFor="let watch of watchesList">
+      <div class="card shadow card-hover">
+        <img (click)="detailsPage(watch.model)" [src]="watch.picture" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title mb-2" (click)="detailsPage(watch.model)">{{watch.model}}</h5>
+          <p class="card-text text-muted mb-1 right">{{watch.price | currency:"INR":"symbol"}}</p>
+          <p class="card-text mt-0">{{watch.smallInfo}}</p>
+          <button (click)="addToCartList(watch)" [class]="watch.cartAdded ? 'btn btn-success btn-sm ' : 'btn btn-primary btn-sm'">
+            <span *ngIf="!watch.cartAdded">Add to Cart</span>
+            <span *ngIf="watch.cartAdded">Added</span>
+          </button>
+           </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+

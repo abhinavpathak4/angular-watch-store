@@ -1,0 +1,14 @@
+.icon{
+    width: 30p; height: 30px;
+}
+.close-btn { 
+    display: flex;
+    justify-content: flex-end;
+}
+
+.no-border{
+    border: none;
+}
+.white-border{
+    border: 1px solid white;
+}

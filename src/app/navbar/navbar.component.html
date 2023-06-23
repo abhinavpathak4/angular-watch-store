@@ -1,0 +1,37 @@
+<!-- <nav class="navbar navbar-expand-md navbar-dark " style="background-color: #e3f2fd;"> -->
+  <nav class="navbar navbar-expand-md navbar-dark " style="background-color: #07c9c9;"> 
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="assets/logo.png" width="150" height="50" class=" d-inline-block align-top rounded" alt="">
+    </a>
+    
+    <form class="move-right d-flex mr-1">
+     <input (keyup.enter)="detailsPage(model.value)" class="test form-control me-2 border-success btn-raised" #model type="search" placeholder="search" aria-label="search">
+      <button (click)="detailsPage(model.value)" class="btn  white-border btn-outline-info text-white no-border" type="button">Search</button>   
+    </form>
+   
+    
+    <!-- <ul class="navbar-nav fw-bold m-1">
+      <li class="nav-item">
+       <button class="btn button-image btn-outline-info no-border"  >  <a routerLink="/cart"><img src="assets/cart.png" alt=""></a></button>
+      </li>
+      <li><button class="btn">  <a routerLink="/">Logout</a></button></li>
+    </ul> -->
+
+    <ul class="navbar-nav fw-bold m-1">
+      <li class="nav-item set-margin">
+        <button class="btn button-image  btn-outline-info no-border">
+          <a routerLink="/cart">
+            <img src="assets/cart.png" alt="">
+          </a>
+        </button>
+      </li>
+      <li>
+        <button class="btn text-white white-border logout-button mt-3">
+          <a routerLink="/">Logout</a>
+        </button>
+      </li>
+    </ul>
+    
+  </div>
+</nav>

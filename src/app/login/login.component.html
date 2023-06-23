@@ -1,0 +1,163 @@
+ <!-- <label for="name">Name : </label>
+<input type="text" id="name" [formControl]="name">
+
+<p> value : {{name.value}}</p>
+
+<button (click)="updateName()">Update</button> 
+
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <label for="first-name">First Name : </label>
+    <input type="text" id="first-name" formControlName="firstName">
+    <br><br>
+    <label for="last-name">Last Name : </label>
+    <input type="text" id="last-name" formControlName="lastName">
+
+
+    <br>
+    <div formGroupName="address">
+        <h2>Address</h2>
+      
+        <label for="street">Street: </label>
+        <input id="street" type="text" formControlName="street">
+      <br>
+        <label for="city">City: </label>
+        <input id="city" type="text" formControlName="city">
+      <br>
+        <label for="state">State: </label>
+        <input id="state" type="text" formControlName="state">
+      <br>
+        <label for="zip">Zip Code: </label>
+        <input id="zip" type="text" formControlName="zip">
+      </div>
+
+    <br>
+
+    <p> Complete the form to enable Button.</p>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
+<p> {{profileForm | json}} </p>
+<p>{{this.profileForm.status}}</p>
+ -->
+
+
+
+
+ <!-- <div class="container">
+    <h2 class="mb-2 mt-5 text-uppercase text-center">Login</h2>
+   
+
+</div>
+
+<div class="card">
+<div class="container">
+    
+    <form [formGroup]="loginForm" (ngSubmit)="authenticate()">
+    
+        <div class="form-outline mb-4">
+            <label class="form-label" for="email">Email : </label>
+            <input class="form-control" type="email" id="email" formControlName="email">
+
+        </div>
+    
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="password">Password : </label>
+            <input class="form-control" type="text" id="password" formControlName="password">
+
+        </div>
+    
+       <button class="btn btn-primary btn-block mb-4" type="submit">Login</button>
+       <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a routerLink="/register" class="link-danger">Register</a></p>
+ 
+    </form>
+
+</div>
+
+<div class="container">
+  <ng-container *ngIf="!isValid">
+    <h2 class="text-danger text-center"> Invalid Credentials</h2>
+  </ng-container>
+</div>
+</div> -->
+
+
+
+<!-- <div class="wrapper">
+  <div class="logo">
+      <img src="assets/back.png" alt="">
+  </div>
+  <div class="text-center mt-4 name">
+      Watch Store
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="authenticate()" class="p-3 mt-3">
+      <div class="form-field d-flex align-items-center">
+          <span class="far fa-user"></span>
+          <input type="text" formControlName="email" name="userName" id="userName" placeholder="Username">
+      </div>
+      <div class="form-field d-flex align-items-center">
+          <span class="fas fa-key"></span>
+          <input type="password" name="password" id="pwd"  formControlName="password" placeholder="Password">
+      </div>
+      <button class="btn mt-3">Login</button>
+  </form>
+  <div class="text-center fs-6">
+    <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a routerLink="/register" class="link-danger">Register</a></p>
+ 
+  </div>
+</div> -->
+
+
+
+
+
+<div class="container-fluid ps-md-0">
+  <div class="row g-0">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h3 class="login-heading mb-4">Welcome back!</h3>
+
+              <!-- Sign In Form -->
+              <form [formGroup]="loginForm" (ngSubmit)="authenticate()" class="p-3 mt-3">
+                <div class="form-floating mb-3">
+                  <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="password" formControlName="password" class="form-control" id="floatingPassword" placeholder="Password">
+                  <label for="floatingPassword">Password</label>
+                </div>
+
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
+                  <label class="form-check-label" for="rememberPasswordCheck">
+                    Remember password
+                  </label>
+                </div>
+
+                <div class="d-grid">
+                  <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Sign in</button>
+                  <div class="text-center fs-6">
+                    <p class="small  mt-2 pt-1 mb-0">Don't have an account? <a routerLink="/register" class="link-danger">Register</a></p>
+                  </div>
+                </div>
+
+                <div class="container">
+                  <ng-container *ngIf="!isValid">
+                    <h2 class="text-danger text-center mt-4"> Invalid Credentials</h2>
+                  </ng-container>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

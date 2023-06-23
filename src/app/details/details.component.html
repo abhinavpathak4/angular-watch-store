@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+
+<div class="close-btn">
+  <button class="btn button-image test-margin  no-border" ><a routerLink="/home"><img class="icon" src="assets/back1.png" alt="back"></a></button>
+</div>
+<div class="container mt-0">
+  
+  <div class="row justify-content-center">
+
+    
+    
+    <div class="col-md-8">
+      <div class="card mt-4 mb-3 shadow">
+        <div class="row g-0">
+          <div class="col-md-5">
+            <img src="{{watch.picture}}" class="img-fluid rounded-start" alt="{{watch.model}}">
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              <h3 class="card-title">{{watch.model}}</h3>
+              <p class="card-text">{{watch.info}}</p>
+              <p>
+                <b><em>{{watch.price | currency:"INR":"symbol"}}</em></b>
+              </p>
+              <p class="text-end">
+                
+                <button (click)="addToCartList(watch)" [class]="watch.cartAdded ? 'btn btn-success' : 'btn btn-secondary'">
+                  <span *ngIf="!watch.cartAdded">Add to Cart</span>
+                  <span *ngIf="watch.cartAdded">Added</span>
+                </button>
+              </p>
+              
+              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

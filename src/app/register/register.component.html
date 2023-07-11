@@ -27,18 +27,18 @@
                 <button class="btn button-image test-button mb-0 no-border" ><a routerLink=""><img class="icon" src="assets/back-button.png" alt="back"></a></button>
               </div>
               <div class="card-body py-4 px-md-5">
-                <form #registerForm="ngForm" (ngSubmit)="addUser(registerForm.value)">
+                <form [formGroup]="registerForm" (ngSubmit)="addUser()">
                   <!-- 2 column grid layout with text inputs for the first and last names -->
                   <div class="row">
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <input type="text" name="firstName" ngModel id="form3Example1" #firstName class="form-control" />
+                        <input type="text" formControlName="firstName" class="form-control" />
                         <label class="form-label"  for="form3Example1">First name</label>
                       </div>
                     </div>
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <input type="text" name="lastName"  ngModel #lastName id="form3Example2" class="form-control" />
+                        <input type="text" formControlName="lastName"  id="form3Example2" class="form-control" />
                         <label class="form-label" for="form3Example2">Last name</label>
                       </div>
                     </div>
@@ -46,22 +46,22 @@
   
                   <!-- Email input -->
                   <div class="form-outline mb-4">
-                    <input type="email"  name="email" ngModel #email id="form3Example3" class="form-control" />
+                    <input type="email"  name="email" formControlName="email" id="form3Example3" class="form-control" />
                     <label class="form-label" for="form3Example3">Email address</label>
                   </div>
   
                   <!-- Password input -->
                   <div class="form-outline mb-4">
-                    <input type="password" name="password"  ngModel #password id="form3Example4" class="form-control" />
+                    <input type="password" name="password" formControlName="password" ngModel #password id="form3Example4" class="form-control" />
                     <label class="form-label" for="form3Example4">Password</label>
                   </div>
                   <!-- Submit button -->
-                  <button (click)="notifyMethod()"  type="submit"  class="btn btn-primary btn-block mb-4">
+                  <button   type="submit"  class="btn btn-primary btn-block mb-4">
                     Sign up
                   </button>
   
-                  <h3 class="text-center fs-6 text-success m-2" *ngIf="notify">User Registration Successful!!</h3>
-  
+                  <h3 class="text-center fs-6 text-success m-2" *ngIf="notify && pressed">User Registration Successful!!</h3>
+                  <h3 class="text-center fs-6 text-danger m-2" *ngIf="!notify && pressed">All fields are mandatory</h3>
                   
                   
                 </form>

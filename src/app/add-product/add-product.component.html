@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+
+
+
+<div class="container m-2">
+  
+    <div class="card p-2">
+      <h1 class="text-center m-2">Add Products</h1>
+        <div class="row">
+            <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+            <div class="col-6">
+                
+                    <label for="">price</label>
+                    <input [(ngModel)]="product.price" name="price" class="w-100" type="number">
+            </div>
+            <div class="col-6">
+                <label for="">info</label>
+                <input [(ngModel)]="product.info" name="info" class="w-100" type="text">
+            </div>
+            <div class="col-6">
+                <label for="">smallInfo</label>
+                <input [(ngModel)]="product.smallInfo" name="smallInfo" class="w-100" type="text">
+            </div>
+            <div class="col-6">
+                <label for="">model</label>
+                <input [(ngModel)]="product.model" name="model" class="w-100" type="text">
+            </div>
+            <div class="col-6">
+                <input type="file" multiple value="select" (change)="onFileSelect($event)">
+
+            </div>
+
+            <div align="end">
+                <button class="btn mr-2 btn-danger m-2">clear</button>
+                <button type="submit" class="btn btn-primary">Add Product</button>
+            </div>
+        </form>
+        </div>
+    </div>
+
+<!-- 
+    <h5 *ngFor="let img of product.productImages">
+        <img [src]="img.url" alt="">
+    </h5> -->
+
+
+
+
+</div>
+
+
+
+
+<h1 class="text-center mt-2"> Remove Watches</h1>
+
+<div class="container pd-5 m-5">
+
+  <table class="table">
+
+    <thead>
+      <th>Model</th>
+      <th>Cost</th>
+      <th>Action</th>
+    </thead>
+
+    <tr class="m-1" *ngFor="let watch of watches">
+      <td>{{watch.model}}</td>
+      <td> {{watch.smallInfo}} </td>
+      <td>
+         <button (click)="removeWatches(watch.id)" class="btn  btn-danger"> 
+          <span>Remove</span>
+       </button> 
+       </td>
+    </tr>
+
+  </table>
+
+  
+</div>

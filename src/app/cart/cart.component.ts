@@ -1,54 +1,38 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CartServiceService } from '../services/cart-service.service';
+import { Products } from '../interfaces/products';
 
-import { Watches } from '../watches';
-import { WatchserviceService } from '../watchservice.service';
-import { CartServiceService } from '../cart-service.service';
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  cartWatches: Watches[] = [];
-  numberOfCartItems : number = 0;
-  cartService : CartServiceService = inject(CartServiceService);
-  totalCartValue : number  = 0;
-  getCartItems(){
+  cartWatches: Products[] = [];
+
+  constructor(private cartService : CartServiceService){}
+
+  ngOnInit() {
     this.cartWatches = this.cartService.getCartList();
   }
-  deleteFromCart(item: Watches) {
+
+  getTotalCartValue(): number {
+    return this.cartWatches.reduce((total, watch) => total + watch.price, 0);
+  }
+
+  deleteFromCart(item: Products): void {
     const index = this.cartWatches.indexOf(item);
-    if (index > -1) {
+    if (index !== -1) {
       this.cartWatches.splice(index, 1);
-      this.numberOfCartItems--;
-      this.totalCartValue = this.cartService.totalAmount();
-      console.log("Item removed from cart.");
-    } else {
-      console.log("Item not found in cart.");
     }
   }
 
-  sortOptions(selectedValue: string) {
+  sortOptions(selectedValue: string): void {
     if (selectedValue === "value1") {
-      this.sortListByPriceDesc();
+      this.cartWatches = this.cartWatches.sort((b,a) => a.price - b.price);
     } else if (selectedValue === "value2") {
-      this.sortListByPrice();
+      this.cartWatches = this.cartWatches.sort((a, b) => a.price - b.price);
     }
-  }
-  
-  
-  
-  sortListByPrice() {
-    this.cartWatches.sort((a, b) => a.price - b.price);
-  }
-  sortListByPriceDesc(){
-    this.cartWatches.sort((b, a) => a.price - b.price);
-  }
-  
-  ngOnInit() {
-    this.getCartItems();
-    this.totalCartValue = this.cartService.totalAmount();
-    this.numberOfCartItems= this.cartService.numberOfItemsInCart();
-
   }
 }

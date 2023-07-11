@@ -6,4 +6,21 @@
   transform: translateY(-10px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+.img{
+  height: 30px;
+  width:  30px;
+}
+.search-form {
+  display: flex;
+  justify-content: right;
+}
 
+.search-form form {
+  max-width: 30%;
+  width: 100%;
+}
+.set-size{
+  width: 200px;
+  height: 200px;
+  margin: 50px 150px;
+}

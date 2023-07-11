@@ -13,8 +13,9 @@
       <div class="card mt-4 mb-3 shadow">
         <div class="row g-0">
           <div class="col-md-5">
-            <img src="{{watch.picture}}" class="img-fluid rounded-start" alt="{{watch.model}}">
+            <img [src]="watch.productImages.url" class="img-fluid rounded-start" alt="{{watch.model}}">
           </div>
+          
           <div class="col-md-7">
             <div class="card-body">
               <h3 class="card-title">{{watch.model}}</h3>

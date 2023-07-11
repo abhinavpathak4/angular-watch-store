@@ -16,7 +16,7 @@
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
                       <p class="mb-1">Shopping cart</p>
-                      <p class="mb-0">You have <span class="text-primary">{{numberOfCartItems}} items</span>  in your cart</p>
+                      <p class="mb-0">You have <span class="text-primary">{{cartWatches.length}} items</span>  in your cart</p>
                     </div>
                     <div>
 
@@ -43,7 +43,7 @@
                         <div class="d-flex flex-row align-items-center">
                           <div>
                             <img
-                              src="{{watch.picture}}"
+                              [src]="watch.productImages.url"
                               class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
                           </div>
                           <div class="ms-3">
@@ -121,7 +121,7 @@
   
                       <div class="d-flex justify-content-between">
                         <p class="mb-2">Subtotal</p>
-                        <p class="mb-2">{{totalCartValue | currency:"INR":"symbol"}}</p>
+                        <p class="mb-2">{{getTotalCartValue() | currency:"INR":"symbol"}}</p>
                       </div>
   
                       <div class="d-flex justify-content-between">
@@ -131,12 +131,12 @@
   
                       <div class="d-flex justify-content-between mb-4">
                         <p class="mb-2">Total(Incl. taxes)</p>
-                        <p class="mb-2">{{totalCartValue  | currency:"INR":"symbol"}}</p>
+                        <p class="mb-2">{{getTotalCartValue()  | currency:"INR":"symbol"}}</p>
                       </div>
   
                       <button type="button" class="btn btn-info btn-block btn-lg">
                         <div class="d-flex justify-content-between">
-                          <span>{{totalCartValue  | currency:"INR":"symbol"}}</span>
+                          <span>{{getTotalCartValue()  | currency:"INR":"symbol"}}</span>
                           <span> &nbsp; Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                         </div>
                       </button>

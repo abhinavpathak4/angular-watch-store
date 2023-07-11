@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
-import { Watches } from '../watches';
-import { WatchserviceService } from '../watchservice.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CartServiceService } from '../cart-service.service';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CartServiceService } from '../services/cart-service.service';
+import { Products } from '../interfaces/products';
+import { ProductServiceService } from '../services/product-service.service';
 
 @Component({
   selector: 'app-details',
@@ -10,28 +10,21 @@ import { CartServiceService } from '../cart-service.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent {
-  watch : any;
-  watchesService : WatchserviceService = inject(WatchserviceService);
-  cartService : CartServiceService = inject(CartServiceService);
+  watch:any;
 
-  model: string= "";
-
-  constructor( private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductServiceService,
+    private cartService : CartServiceService
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.model = params['model'];
-      console.log(this.model);
-      this.watch = this.watchesService.findByModel(this.model);
-      console.log(this.watch);
+      this.watch = this.productService.findByModel(params['model']);
     });
   }
-  addToCartList(item:Watches){
+
+  addToCartList(item: Products) {
     this.cartService.addToCartList(item);
   }
-  // constructor(){
-  //   this.watch = this.watchesService.findByModel("Titan");
-  //   console.log(this.watch);
-  // }
-  
 }

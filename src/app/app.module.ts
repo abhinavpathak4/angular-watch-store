@@ -12,9 +12,8 @@ import { DetailsComponent } from './details/details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
-import { PopupAddedComponent } from './popup-added/popup-added.component';
-import { MatDialog} from '@angular/material/dialog'
-
+import { AddProductComponent } from './add-product/add-product.component'
+import {HttpClientModule} from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,13 +24,14 @@ import { MatDialog} from '@angular/material/dialog'
     NavbarComponent,
     RegisterComponent,
     FooterComponent,
-    PopupAddedComponent
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

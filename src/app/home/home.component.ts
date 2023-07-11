@@ -1,49 +1,48 @@
-import { Component, inject } from '@angular/core';
-import { Watches } from '../watches';
-import { WatchserviceService } from '../watchservice.service';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartServiceService } from '../cart-service.service';
-//import { MatDialog } from '@angular/material/dialog';
-//import { PopupAddedComponent } from '../popup-added/popup-added.component';
+import { CartServiceService } from '../services/cart-service.service';
+import { Products } from '../interfaces/products';
+import { ProductServiceService } from '../services/product-service.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-  string1 : string = 'Add To Cart';
-  string2 : string  = 'Added';
-  changeText : boolean = false;
+  watches: Products[] = [];
+  notFound: boolean = false;
+  visibility: boolean = false;
 
-  changeTextCartButton(){
-    this.changeText = true;
+  constructor(private productService: ProductServiceService,private cartService: CartServiceService, private router: Router) { }
+
+  ngOnInit() {
+    this.watches = this.productService.watches;
   }
 
-  item : string = '';
-  watchesList : Watches[] = [];
-  watchesService : WatchserviceService = inject(WatchserviceService);
-  cartService : CartServiceService = inject(CartServiceService);
-
-  //matDialog!: MatDialog ;
-  constructor(private router:Router){
-    this.watchesList = this.watchesService.getAllWatches(); 
+  detailsPage(brand: string) {
+    this.router.navigate(['details', brand])
   }
 
-  detailsPage(brand : string){
-    console.log(brand);
-    this.router.navigate(['details',brand])
-  }
-
-  addToCartList(item : Watches){
+  addToCartList(item: Products) {
     this.cartService.addToCartList(item);
   }
+  
+  filterWatches(searchQuery: string) {
+    const lowerCaseQuery = searchQuery.toLowerCase();
+    this.watches = this.productService.watches.filter(watch =>
+      watch.model.toLowerCase().includes(lowerCaseQuery)
+    );
 
-  // openPu(){
-  //   this.matDialog.open(PopupAddedComponent,{
-  //     width:"200px",
-  //     height:"250px"
-  //   })
-  //}
+    if (this.watches.length === 0) this.notFound = true;
+    else this.notFound = false;
+    this.visibility = true;
+  }
+
+  home() {
+    this.watches = this.productService.watches;
+    this.notFound = false;
+    this.visibility = false;
+  }
 }

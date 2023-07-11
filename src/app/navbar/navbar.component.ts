@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserServiceService } from '../services/user-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,13 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(private router : Router){}
-  detailsPage(brand : string){
-    if(brand){
-    console.log(brand);
-    this.router.navigate(['details',brand])}
-    else{
-      this.router.navigate(['popup'])
-    }
+  constructor(public userService : UserServiceService, private router : Router){}
+
+  logout(){
+    this.userService.isLoggedIn = false;
   }
+
+  detailsPage(brand : string){
+      this.router.navigate(['details',brand])
+    }
 }
